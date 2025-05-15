@@ -1,0 +1,81 @@
+import random
+hangman = ["""
+    +---+
+    |   |
+        |
+        |
+        |
+        |
+  =========""", """
+    +---+
+    |   |
+    O   |
+        |
+        |
+        |
+  =========""", """      
+    +---+
+    |   |
+    O   |
+    |   |
+        |
+        |
+  =========""", """    
+    +---+
+    |   |
+    O   |
+    |\  |
+        |
+        |
+  =========""", """          
+    +---+
+    |   |
+    O   |
+   /|\  |
+        |
+        |
+  =========""", """        
+    +---+
+    |   |
+    O   |
+   /|\  |
+     \  |
+        |
+  =========""", """        
+    +---+
+    |   |
+    O   |
+   /|\  |
+   / \  |
+        |
+  ========="""]
+
+i = 0
+options = ["python", "java", "rust", "react", "nepal", "india"]
+goal = random.choice(options)
+wrong_letter = []
+sheet = []
+for j in goal:
+    sheet.append('_')
+print(f"Guess the word with {len(goal)} letters. You can make only 6 wrong guesses. After which man is hanged.")
+print(hangman[0])
+
+while i <= 6:
+    print(f"\nThe Word: {sheet}")
+    guess = input("Your Guess: ")
+    if guess in goal:
+        print("Correct Guess. Keep Going...")
+        for z in range(len(goal)):
+            if goal[z] == guess:
+                sheet[z] = guess
+    else:
+        i += 1
+        wrong_letter.append(guess)
+        print("\nIncorrect guess!")
+        print(hangman[i])
+        print(f"{6-i} guesses remaining...")
+        print(f"wrong letters: {wrong_letter}")
+
+    if "_" not in sheet:
+        print("Wow! You Won!!!")
+        break

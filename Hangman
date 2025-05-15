@@ -51,7 +51,7 @@ hangman = ["""
   ========="""]
 
 i = 0
-options = ["python", "java", "rust", "react", "nepal", "india"]
+options = ["python", "java", "rust", "react", "nepal", "india", "computer"]
 goal = random.choice(options)
 wrong_letter = []
 sheet = []

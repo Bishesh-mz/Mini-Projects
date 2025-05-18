@@ -1,0 +1,41 @@
+import random
+
+player = []
+score = []
+guess = []
+c = []
+
+scope = int(input("Enter the number of Players: "))
+for s in range(scope):
+    player.append(input(f"Player{s+1}: "))
+    score.append(100)
+
+
+for i in range(scope):
+    print(f"\n\n{player[i]}'s Turn. Opponent(s) pick the starting and ending numbers\n")
+    l = int(input("starting number: "))
+    h = int(input("ending number: "))
+    ans = random.randint(l, h)
+
+    print(f"\n\n{player[i]}, guess the number between [{l} - {h}]: ")
+    guess.append(int(input("Your First Guess: ")))
+    c.append(1)
+
+    while score[i] > 0:
+        if guess[i] > ans:
+            guess[i] = int(input("Guess a smaller number: "))
+        elif guess[i] < ans:
+            guess[i] = int(input("Guess a bigger number: "))
+        else:
+            print(f"\n{guess[i]} is the CORRECT answer!!!")
+            print(f"You scored {score[i]}/100.")
+            break
+        score[i] -= 10
+        c[i] += 1
+    else:
+        print("Too many wrong guesses. You lose XD !!!")
+
+
+print(f"\n\n\n\nLeaderboards:\nPlayer\t\tNo. of Guesses\t\tScore\n")
+for j in range(scope):
+    print(f"{player[j]}\t\t\t {c[j]}\t\t\t\t {score[j]}\n")

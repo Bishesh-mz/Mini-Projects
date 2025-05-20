@@ -1,0 +1,37 @@
+import random
+
+losing = {
+    'rock': 'paper',
+    'paper': 'scissors',
+    'scissors': 'rock'
+}
+options = ["rock", "paper", "scissors"]
+c = 1
+w = l = d = 0
+
+while True:
+    user = input("Rock Paper Scissors: ")
+    user = user.lower()
+    bot = random.choice(options)
+    print(bot)
+
+    if user in losing:
+        if losing[user] == bot:
+            print("You lose!!!\n")
+            l += 1
+        elif user == bot:
+            print("Draw...\n")
+            d += 1
+        else:
+            print("You win!!!\n")
+            w += 1
+    else:
+        print("\n invalid input")
+
+    another = input("Want another round? (Y/N): ")
+    another = another.lower()
+    if another == 'n':
+        print(f"\nOut of {c} Rounds\nYou won {w} round(s), lost {l} and {d} rounds were draw.")
+        break
+    c += 1
+    print("\n")
